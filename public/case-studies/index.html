@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23131513'/%3E%3Ctext x='32' y='44' font-family='Arial,sans-serif' font-weight='700' font-size='30' text-anchor='middle' fill='%238fc4a3'%3ERM%3C/text%3E%3C/svg%3E">
+<title>Case studies · Rafael Morales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Private, unlisted case-study deck: an export of the Slides deck (Aplazo + Clara).
+   Not linked from the landing; kept out of search with noindex (meta + X-Robots-Tag in /_headers). */
+:root { color-scheme: dark; --ground: #131513; --ink: #f3f4f1; --muted: #9aa198; --hairline: #2a2e2a; --focus: #8fc4a3; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--ground); color: var(--ink); }
+body { font-family: "Instrument Sans", "Helvetica Neue", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+
+.bar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px max(16px, env(safe-area-inset-right)) 14px max(16px, env(safe-area-inset-left));
+  background: rgba(19, 21, 19, .86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--hairline); }
+.bar a.home { color: var(--ink); text-decoration: none; font-weight: 700; font-size: 20px; letter-spacing: -.5px; }
+.bar .meta { display: flex; align-items: center; gap: 16px; }
+.bar .label { font-family: "IBM Plex Mono", ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.bar button { font: 600 14px/1 "Instrument Sans", Arial, sans-serif; color: #0a0b0a; background: #eef0ec; border: 0; border-radius: 999px; padding: 10px 18px; cursor: pointer; }
+.bar button:hover { background: #ffffff; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.deck { max-width: 1600px; margin: 0 auto; padding: 24px max(16px, env(safe-area-inset-right)) 64px max(16px, env(safe-area-inset-left));
+  display: flex; flex-direction: column; gap: 24px; }
+.frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; background: #f3f4f1; --s: .5; scroll-margin-top: 80px; }
+@media (max-width: 700px) { .deck { gap: 12px; } .frame { border-radius: 6px; } .bar .label { display: none; } }
+
+/* The slide canvas: 1920×1080, scaled to the frame. Defaults follow the Slides format. */
+.slide { position: absolute; top: 0; left: 0; width: 1920px; height: 1080px; overflow: hidden; transform: scale(var(--s)); transform-origin: 0 0;
+  display: flex; flex-direction: column; font-family: "Instrument Sans", Arial, sans-serif; color: #0a0b0a; text-align: left; }
+.slide * { box-sizing: border-box; margin: 0; }
+.slide div { display: flex; flex-direction: column; min-width: 0; }
+.slide h1 { font-size: 96px; font-weight: 600; line-height: 1.1; }
+.slide h2 { font-size: 64px; font-weight: 600; line-height: 1.15; }
+.slide h3 { font-size: 44px; font-weight: 600; line-height: 1.2; }
+.slide p { font-size: 32px; font-weight: 400; line-height: 1.4; overflow-wrap: break-word; }
+.slide p:empty { display: none; }
+.slide img { display: block; object-fit: cover; max-width: none; }
+.slide svg.x-icon { display: block; flex: none; }
+.slide a { color: inherit; text-decoration: underline; text-underline-offset: .15em; }
+
+/* Present mode: one slide at a time, fitted to the screen. */
+body.presenting { overflow: hidden; background: #000; }
+body.presenting .bar { display: none; }
+body.presenting .deck { position: fixed; inset: 0; max-width: none; padding: 0; display: block; }
+body.presenting .frame { display: none; position: absolute; top: 50%; left: 50%; width: calc(1920px * var(--s)); height: auto;
+  transform: translate(-50%, -50%); border-radius: 0; }
+body.presenting .frame.current { display: block; }
+.hint { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%); z-index: 20; display: none;
+  font: 500 13px/1 "IBM Plex Mono", ui-monospace, monospace; color: #9aa198; background: rgba(19,21,19,.8); padding: 8px 14px; border-radius: 999px; }
+body.presenting .hint { display: block; animation: fade 3s forwards; }
+@keyframes fade { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { body.presenting .hint { animation: none; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a class="home" href="/">Rafael Morales</a>
+  <div class="meta">
+    <span class="label">Private · Case studies</span>
+    <button type="button" id="present">Present</button>
+  </div>
+</header>
+<main class="deck" id="deck">
+<div class="frame" aria-label="Slide 1 of 28"><section class="slide" id="cover" style="background:#f3f4f1">
+  <img loading="lazy" decoding="async" src="img/cover-1.webp" alt="A young man on a bus opens a new pair of headphones" style="position:absolute; top:600px; left:0; width:260px; height:400px; border-radius:28px">
+  <img loading="lazy" decoding="async" src="img/cover-2.webp" alt="Two friends paying with Aplazo outside a mall" style="position:absolute; top:640px; left:272px; width:480px; height:360px; border-radius:28px; object-position:50% 90.93%">
+  <img loading="lazy" decoding="async" src="img/cover-3.webp" alt="A hand holds a phone with the Clara card screen against a green wall" style="position:absolute; top:600px; left:764px; width:440px; height:400px; border-radius:28px">
+  <img loading="lazy" decoding="async" src="img/cover-4.webp" alt="Aplazo pay-in-store screen" style="position:absolute; top:640px; left:1216px; width:280px; height:360px; border-radius:28px; object-position:1.79% 50%">
+  <img loading="lazy" decoding="async" src="img/cover-5.webp" alt="Clara dashboard on a laptop" style="position:absolute; top:600px; left:1508px; width:412px; height:400px; border-radius:28px">
+  <div id="e6-1ftwghs" style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+  </div>
+  <p id="p7c19fafff561r0-2810dd44" style="position:absolute; top:64px; left:64px; width:398px; padding:8px 24px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#0a0b0a; border-radius:256px; box-shadow:inset 0 0 0 2px #d5d9d3">Private · Case studies</p>
+  <h1 id="p7c19fafff561r1-2810dd44" style="position:absolute; top:237.58px; left:64px; width:1500px; font-family:'Instrument Sans', Arial, sans-serif; font-size:132px; font-weight:700; line-height:0.92; letter-spacing:-6.5px; color:#0a0b0a">Designing money<br><span style="color:#2c5a40">for real life.</span></h1>
+</section></div>
+<div class="frame" aria-label="Slide 2 of 28"><section class="slide" id="contents" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Two cases, <span style="color:#2c5a40">two kinds of fintech</span></h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">Direct to Consumer credit in physical stores. Spend management for enterprise finance teams (B2B).</p>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1.25fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:20px; padding:40px 44px; background:#131513; border-radius:20px">
+      <div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between">
+        <img loading="lazy" decoding="async" src="img/aplazo-logo.svg" alt="Aplazo" style="height:40px; filter:brightness(0) grayscale(1) invert(1)">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Case 01 &nbsp;· 2026</p>
+      </div>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.05; letter-spacing:-1.5px; color:#ffffff">Buy in store, pay later.</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#ffffff">Buy now, pay later in physical stores, made fast and reliable for customers and clerks.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:row; gap:40px; align-items:end">
+        <div style="display:flex; flex-direction:column; gap:4px">
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:80px; font-weight:500; line-height:1; letter-spacing:-4px; font-variant-numeric:tabular-nums; color:#ffffff">6x faster</p>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; color:#ffffff">Average purchase time</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px">
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:80px; font-weight:500; line-height:1; letter-spacing:-4px; font-variant-numeric:tabular-nums; color:#ffffff">10/10</p>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; color:#ffffff">Pilot merchants preferred it</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <div style="display:flex; flex-direction:row; align-items:center; justify-content:space-between">
+        <img loading="lazy" decoding="async" src="img/clara-logo.svg" alt="Clara" style="height:36px; opacity:0.85; filter:brightness(0) grayscale(1)">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Case 02 · 2022–2024</p>
+      </div>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.05; letter-spacing:-1.5px; color:#0a0b0a">Built for enterprise.<br>Still simple for startups.</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#0a0b0a">Moving a spend management platform upmarket without losing the customers who made it.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:row; gap:40px; align-items:end">
+        <div style="display:flex; flex-direction:column; gap:4px">
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:88px; font-weight:500; line-height:1; letter-spacing:-4px; font-variant-numeric:tabular-nums; color:#2c5a40">+47 pts</p>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; color:#565c55">Enterprise and mid-market share</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:4px">
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:88px; font-weight:500; line-height:1; letter-spacing:-4px; font-variant-numeric:tabular-nums; color:#0a0b0a">10%</p>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; color:#565c55">New customer acquisition MoM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Case studies · Private · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 3 of 28"><section class="slide" id="ap-open" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="position:relative; height:640px; display:flex; flex-direction:column; align-self:stretch; background:#e4e7e2; border-radius:28px; overflow:hidden">
+    <img loading="lazy" decoding="async" src="img/ap-open-1.webp" alt="A customer pays at a shop counter with his phone while the clerk holds the card terminal" style="position:absolute; top:0; right:0; left:0; height:640px; object-position:50% 43.357%; width:100%">
+    <div style="position:absolute; right:0; bottom:0; left:0; display:flex; flex-direction:row; align-items:end; justify-content:space-between; padding:48px; background:linear-gradient(0deg, #0a0b0ad1 0%, #0a0b0a00 100%)">
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#f3f4f1">2026</p>
+        <img loading="lazy" decoding="async" src="img/aplazo-logo.svg" alt="Aplazo" style="height:128px; filter:brightness(0) grayscale(1) invert(1)">
+      </div>
+      <div style="display:flex; flex-direction:row; gap:12px">
+        <p style="padding:8px 22px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#f3f4f1; background:#f3f4f129; border-radius:256px">Product Design Lead</p>
+        <p style="padding:8px 22px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#f3f4f1; background:#f3f4f129; border-radius:256px">BNPL in stores</p>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid; gap:64px; grid-template-columns:5fr 7fr">
+    <div style="display:flex; flex-direction:column; gap:16px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Case 01</p>
+      <div style="display:flex; flex-direction:row; flex-wrap:wrap; gap:15px; align-items:baseline">
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.02; letter-spacing:-2px; color:#0a0b0a">Buy</h3>
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.02; letter-spacing:-2px; color:#8b9088; text-decoration:line-through solid #0a0b0a">now</h3>
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.02; letter-spacing:-2px; color:#0a0b0a">fast, pay later</h3>
+      </div>
+    </div>
+    <p style="padding:44px 0 0; font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; line-height:1.45; color:#565c55">Making buy now, pay later fast and reliable in physical stores.<br>From about 2 minutes per purchase to 20 seconds.</p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 4 of 28"><section class="slide" id="ap-glance" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">At a glance</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">Aplazo is a buy now, pay later for customers and merchants in Mexico, online and in physical stores.</p>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr 1.15fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:28px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Role</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Product Design Lead, BNPL squad. Full-time, hands-on.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Timeline</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">2026 to present</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Team</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Vicente R - EM<br>Angélica I - PM<br>Carlos P. Backend Engineer<br>Enrique R- Mobile Engineer<br>Santiago R - Mobile Engineer<br>Kari Q - QA Engineer</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:28px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Scope</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">QR code, Customer ID code, Aplazo POS Terminal with NFC contactless payments, prepaid loan.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Users</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Customers, and the store clerks who sell with Aplazo every day.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Squad goals</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Time to purchase, BNPL Offline GMV and NPS</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:40px 44px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Result</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">6x faster</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff">Average purchase time with NFC or the Customer ID code, down from about 2 minutes with the payment link.</p>
+      <div style="flex:1"></div>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff">BNPL Offline NPS rose from <b>65 to 87</b>, against a 70 company average.</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff"><b>All 10 merchants</b> in the POS pilot preferred it over other payment methods.</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 5 of 28"><section class="slide" id="ap-context" style="display:grid; gap:56px; align-items:center; grid-template-columns:600px 1fr; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:24px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Credit for people <span style="color:#2c5a40">banks overlook</span></h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#565c55">Aplazo approves credit in minutes, online and in physical stores. For most customers it is their first formal credit, and by mid-2024 most purchases already happened in a store.</p>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:24px">
+    <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr; padding:0 0 0 140px">
+      <div style="display:flex; flex-direction:column; gap:32px; justify-content:space-between; padding:32px; background:#131513; border-radius:20px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">15k+</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.25; color:#ffffff">Merchants online and in store</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:32px; justify-content:space-between; padding:32px; background:#8b9088; border-radius:20px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">&lt;4 min</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.25; color:#ffffff">From application to approved credit (KYC)</p>
+      </div>
+    </div>
+    <div style="display:grid; gap:24px; grid-template-columns:1fr 1.4fr 1fr">
+      <div style="display:flex; flex-direction:column; gap:32px; justify-content:space-between; padding:32px; background:#131513; border-radius:20px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">7/10</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.25; color:#ffffff">Get formal credit for the first time</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:32px; justify-content:space-between; padding:32px; background:#2e7a52; border-radius:20px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">50%+</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.25; color:#ffffff">Of transactions happened in a physical store by mid-2024</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:32px; justify-content:space-between; padding:32px; background:#131513; border-radius:20px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">4/10</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.25; color:#ffffff">Have no credit history at all</p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 6 of 28"><section class="slide" id="ap-challenge" style="display:flex; flex-direction:column; gap:44px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">The problem: a payment link that never arrived</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">Half of our new customers were getting an embarrassing experience, and store clerks stopped recommending us.</p>
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:1.25fr 1fr 0.8fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:22px; padding:36px 40px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Before: Payment link</p>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+        <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">1</p>
+        <p style="flex:1; font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a">The customer selects Aplazo at the counter.</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+        <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">2</p>
+        <p style="flex:1; font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a">The clerk sends a payment link by SMS or WhatsApp.</p>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+        <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">3</p>
+        <p style="flex:1; font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a">The link opens checkout, where the customer picks an installment plan.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px; padding:36px 40px; background:#ffffff; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Business problems</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>Fewer in-store payments than expected.</b> <span style="color:#565c55">Only 25% of new customers activated (made a first purchase), and BNPL Offline GMV was 0.08B in January 2026.</span></p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>Clerks stopped offering Aplazo.</b> <span style="color:#565c55">The hardest insight from our field research was knowing that stores perceived our payment method as painful and decided to stop promoting it.</span></p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px; padding:36px 40px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Squad goals</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:600; line-height:1.3; color:#ffffff">Time to purchase</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:600; line-height:1.3; color:#ffffff">BNPL Offline GMV</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:600; line-height:1.3; color:#ffffff">NPS</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px; align-items:center; padding:32px 44px; background:#131513; border-radius:20px">
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#8fc4a3">Our vision</p>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.15; letter-spacing:-1px; color:#ffffff">The best possible experience for paying in stores with Aplazo.</p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 7 of 28"><section class="slide" id="ap-field" style="display:grid; grid-template-columns:832px 1024px; padding:64px 0 128px 64px; background:#f3f4f1">
+  <img loading="lazy" decoding="async" src="img/ap-field-1.webp" alt="A shopper with a bag walks past store windows in a mall" style="position:absolute; top:0; left:960px; width:960px; height:1016px; object-position:72% 50%">
+  <div style="display:flex; flex-direction:column; gap:48px">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Going into the field</h2>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#0a0b0a">Several rounds of research, on both sides of the counter.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:32px">
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:start">
+        <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">1</p>
+        <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+          <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.2; color:#0a0b0a">Mystery shopping</h3>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#565c55">We bought with Aplazo as customers, to feel every step at the till. We went to more than 20 stores in different malls in Mexico City to test it ourselves.</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:start">
+        <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">2</p>
+        <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+          <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.2; color:#0a0b0a">Clerk interviews</h3>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#565c55">With the store clerks who sell with Aplazo every day.</p>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:row; gap:24px; align-items:start">
+        <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">3</p>
+        <div style="display:flex; flex-direction:column; gap:6px; flex:1">
+          <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.2; color:#0a0b0a">Time to completion</h3>
+          <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#565c55">We timed every purchase, from choosing Aplazo to a confirmed payment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 8 of 28"><section class="slide" id="ap-found" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">What we found</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">The main issue was connectivity. Signal inside most stores was poor.</p>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:12px; justify-content:space-between; padding:40px 44px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Customers</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.08; letter-spacing:-1.5px; color:#ffffff">Embarrassed at the counter. They'd rather use another payment method or abandon the purchase.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; justify-content:space-between; padding:40px 44px; background:#131513; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Clerks</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.08; letter-spacing:-1.5px; color:#ffffff">Stopped offering Aplazo. A slow checkout wasn't worth promoting.</p>
+    </div>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr 1fr 1.2fr">
+    <div style="display:flex; flex-direction:column; gap:14px; padding:32px 36px; background:#eef0ec; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Pain 01</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">The link arrived late, or never arrived at all.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px; padding:32px 36px; background:#eef0ec; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Pain 02</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">About 2 minutes average per purchase, while the line grew.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px; padding:32px 36px; background:#eef0ec; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Pain 03</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Anxious customers who never wanted to repeat it, and switched payment methods.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px; padding:32px 36px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">In their words</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#565c55">“Even if I need the credit and I wanted to pay with it, it is very embarrassing that it never worked, I'll look for another option.”</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 9 of 28"><section class="slide" id="ap-constraints" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Designing within real constraints</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">Every iteration had to work with the devices both our customers and stores actually use.</p>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:40px 44px; background:#131513; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#8fc4a3">Our customers' devices</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:160px; font-weight:500; line-height:1; letter-spacing:-7px; font-variant-numeric:tabular-nums; color:#ffffff">8/10</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#ffffff">Aplazo users have an entry-level Android device, and most have limited mobile data.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Merchants operations</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1.05; letter-spacing:-2px; color:#0a0b0a">More than one point of sale system.</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; line-height:1.35; color:#565c55">Most merchants run several systems and manage many payment methods at the counter.</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px; align-items:center; padding:32px 44px; background:#2e7a52; border-radius:20px">
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff">Our goal</p>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.15; letter-spacing:-1px; color:#ffffff">A checkout process store clerks would love to operate and promote,<br>and one that never embarrasses our customers.</p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 10 of 28"><section class="slide" id="ap-process" style="display:flex; flex-direction:column; gap:44px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">The path to Tap and Go</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">We worked towards an incremental set of features that would help us build a Tap and Go experience for BNPL.</p>
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">1</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">QR code</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">On the merchant's screen. The customer scans it.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">2</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">Customer ID</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">A barcode and QR code, read by the store's scanners.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">3</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">POS and NFC</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">Our own Android terminal, with tap to pay.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#131513; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">4</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#ffffff">Prepaid loan</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#ffffff">In progress. Removes checkout entirely.</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 11 of 28"><section class="slide" id="ap-qr" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Iteration 1</p>
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">A QR code on the merchant's screen</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">Our first and fastest iteration. The customer opens the camera, scans, and goes to checkout.</p>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Problem 01</p>
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:700; line-height:1.08; letter-spacing:-1.5px; color:#0a0b0a">Not every Android camera reads QR codes.</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; line-height:1.4; color:#565c55">Many customers had to download a separate app first. So we had to build an In App QR reader feature.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Problem 02</p>
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:700; line-height:1.08; letter-spacing:-1.5px; color:#0a0b0a">The screen faced the wrong way.</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; line-height:1.4; color:#565c55">Clerks turned the monitor around, or customers stepped into the cashier area to scan it.</p>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px; align-items:center; padding:32px 44px; background:#131513; border-radius:20px">
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#8fc4a3">Verdict</p>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.15; letter-spacing:-1px; color:#ffffff">Better than the link, but not practical at a real counter.</p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 12 of 28"><section class="slide" id="ap-id" style="display:grid; gap:48px; grid-template-columns:680px 1fr; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:28px">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Iteration 2</p>
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">The Customer ID code</h2>
+    </div>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#565c55">Most stores already had scanners for their products. So we built on top of them: a unique, temporary code for each customer, shown as a barcode and a QR code.</p>
+    <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">1</p>
+      <p style="flex:1; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">The customer chooses Aplazo and shows their Customer ID.</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">2</p>
+      <p style="flex:1; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">The clerk scans it with the scanner they already use (Barcode or QR).</p>
+    </div>
+    <div style="display:flex; flex-direction:row; gap:20px; align-items:start">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">3</p>
+      <p style="flex:1; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">The customer goes straight to checkout and finishes.</p>
+    </div>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:600; line-height:1.35; color:#2c5a40">No reaching over the counter. No new hardware.<br>Coverage for a wide range of merchant types.</p>
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:1fr 200px 1fr; grid-template-rows:1fr">
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/ap-id-1.webp" alt="A customer holds the Mi código de cliente screen, with a barcode and QR code, over a scanner" style="width:416px; height:888px; object-fit:contain">
+      <p style="position:absolute; bottom:20px; left:20px; padding:6px 16px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:20px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Mi código de cliente</p>
+      <p style="position:absolute; top:24px; left:24px; width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">1</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; align-items:center; justify-content:center; align-self:stretch; padding:0 16px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">2</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; font-weight:600; line-height:1.3; text-align:center; color:#2c5a40">The store scans it</p>
+    </div>
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/ap-id-2.webp" alt="The Aplazo Pay screen on a phone" style="width:416px; height:888px; object-fit:contain">
+      <p style="position:absolute; bottom:20px; left:20px; padding:6px 16px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:20px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Aplazo Pay</p>
+      <p style="position:absolute; top:24px; left:24px; width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">3</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 13 of 28"><section class="slide" id="ap-pos" style="display:grid; grid-template-columns:832px 1024px; padding:64px 0 128px 64px; background:#f3f4f1">
+  <img loading="lazy" decoding="async" src="img/ap-pos-1.webp" alt="A clerk holds a small payment terminal next to a customer's phone on the counter" style="position:absolute; top:0; left:960px; width:960px; height:1016px; object-position:17.713% 50%">
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Iteration 3</p>
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Aplazo POS Terminal, with tap to pay</h2>
+    </div>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#565c55">Contactless is a standard on iOS, not on entry-level Android phones. To bring it to our users, we built our own point of sale on Android, with NFC payments for buy now, pay later.</p>
+    <div style="display:flex; flex-direction:column; gap:12px; padding:32px 36px; background:#131513; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">2 min → 20 s</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff">Average purchase with NFC or the Customer ID code.<br>6 times faster.</p>
+    </div>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">We surveyed the 10 merchants in the pilot. <b>All of them preferred it over other payment methods.</b></p>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px"><a target="_blank" rel="noopener" href="https://www.figma.com/design/sZ1q9P0rrXiOKsmznlSBK9/Aplazo-TPV-2.0?node-id=1-147&amp;t=W3jVNValhIoH85VC-1">Figma File</a></p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; background:#f3f4f1; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 14 of 28"><section class="slide" id="ap-flow" style="background:#f3f4f1">
+  <div id="e1-x7qaqf" style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+  <div id="p1b2dc1487a12r0-c074ae4a" style="position:absolute; top:64px; left:64px; width:1792px; height:130px; display:flex; flex-direction:row; gap:40px; align-items:end; justify-content:space-between">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">User flow: paying in store</h2>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">With the Customer ID code, from the app to the counter.</p>
+    </div>
+    <p style="width:832px; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; text-align:right"><a target="_blank" rel="noopener" href="https://www.figma.com/design/e6zw6RFY3aJNV18JOSr59G/PIPE-278-_-Pre-loan?node-id=5648-11383&amp;t=Zt19qhKypErVtreS-4">Figma File</a></p>
+  </div>
+  <div id="p1b2dc1487a12r1-c074ae4a" style="position:absolute; top:238px; left:64px; width:1792px; height:715px; display:flex; flex-direction:row; gap:20px">
+    <div style="width:388px; display:flex; flex-direction:column; gap:20px">
+      <img loading="lazy" decoding="async" src="img/ap-flow-1.webp" alt="The Pagar en tienda screen with payment methods" style="width:388px; height:560px; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:6px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Step 01</p>
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.15; color:#0a0b0a">Pagar en tienda</h3>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.35; color:#565c55">The customer chooses to pay with Aplazo.</p>
+      </div>
+    </div>
+    <p style="width:40px; align-self:start; padding:250px 0 0; font-family:'Instrument Sans', Arial, sans-serif; font-size:48px; font-weight:500; color:#2c5a40">→</p>
+    <div style="width:388px; display:flex; flex-direction:column; gap:20px">
+      <img loading="lazy" decoding="async" src="img/ap-flow-2.webp" alt="The Mi código de cliente screen with a QR and barcode" style="width:388px; height:560px; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:6px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Step 02</p>
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.15; color:#0a0b0a">Mi código de cliente</h3>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.35; color:#565c55">Shows a unique, temporary barcode and QR code.</p>
+      </div>
+    </div>
+    <p style="width:40px; align-self:start; padding:250px 0 0; font-family:'Instrument Sans', Arial, sans-serif; font-size:48px; font-weight:500; color:#2c5a40">→</p>
+    <div style="width:388px; display:flex; flex-direction:column; gap:20px">
+      <img loading="lazy" decoding="async" src="img/ap-flow-3.webp" alt="A clerk holds the card terminal next to a phone showing a payment QR" style="width:388px; height:560px; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:6px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Step 03</p>
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.15; color:#0a0b0a">At the counter</h3>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.35; color:#565c55">The clerk scans it with the scanner they already use.</p>
+      </div>
+    </div>
+    <p style="width:40px; align-self:start; padding:250px 0 0; font-family:'Instrument Sans', Arial, sans-serif; font-size:48px; font-weight:500; color:#2c5a40">→</p>
+    <div style="width:388px; display:flex; flex-direction:column; gap:20px">
+      <img loading="lazy" decoding="async" src="img/ap-flow-4.webp" alt="The Aplazo Pay checkout screen on a phone" style="width:388px; height:560px; background:#e4e7e2; border-radius:20px; object-position:50% 45.866%">
+      <div style="display:flex; flex-direction:column; gap:6px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Step 04</p>
+        <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:700; line-height:1.15; color:#0a0b0a">Checkout</h3>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.35; color:#565c55">Straight to checkout to finish the purchase.</p>
+      </div>
+    </div>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 15 of 28"><section class="slide" id="ap-next" style="background:#f3f4f1;color:#0a0b0a;font-family:'Instrument Sans', Arial, sans-serif;padding:64px 0px 128px 64px;display:grid;grid-template-columns:832px 1024px">
+<img loading="lazy" decoding="async" src="img/ap-next-1.webp" alt="A woman walks out of a store carrying shopping bags and a box" style="position:absolute;left:960px;top:0px;width:960px;height:1016px;object-fit:cover">
+<div style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#2c5a40">What's next · In progress</p>
+<h2 style="font-size:76px;font-weight:700;line-height:1;letter-spacing:-3px">The prepaid loan</h2>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#565c55">The last step to remove is checkout itself. Before reaching the counter, the customer picks the store and the amount. Then they tap or scan, and the payment is confirmed. Nothing else.</p>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:row;gap:20px;align-items:start"><p style="width:16px;height:16px;border-radius:999px;background:#2e7a52;align-self:start;padding:0px"></p><p style="flex:1;font-size:28px;line-height:1.4"><b>Valid for 24 hours.</b></p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:start"><p style="width:16px;height:16px;border-radius:999px;background:#2e7a52;align-self:start;padding:0px"></p><p style="flex:1;font-size:28px;line-height:1.4"><b>Works with every method we built:</b> QR code, Customer ID and NFC.</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:start"><p style="width:16px;height:16px;border-radius:999px;background:#2e7a52;align-self:start;padding:0px"></p><p style="flex:1;font-size:28px;line-height:1.4"><b>One biometric confirmation.</b> When the merchant matches a prepaid loan, we take that amount directly.</p></div>
+</div>
+<div style="background:#2e7a52;color:#ffffff;border-radius:20px;padding:28px 36px">
+<p style="font-size:28px;line-height:1.4">More than a faster payment: setting a budget and sticking to it helps customers use their credit more responsibly.</p>
+</div>
+</div>
+<div></div>
+<div style="position:absolute;left:0px;top:1016px;width:1920px;height:64px;padding:0px 64px;background:#f3f4f1;border-top:2px solid #d5d9d3;display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:700;letter-spacing:-1px">Rafael Morales</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:1px;text-transform:uppercase;color:#565c55">Aplazo · In-store payments · 2026</p>
+</div>
+</section></div>
+<div class="frame" aria-label="Slide 16 of 28"><section class="slide" id="ap-results" style="display:flex; flex-direction:column; gap:40px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="height:400px; display:flex; flex-direction:column; align-self:stretch; border-radius:20px; overflow:hidden">
+    <img loading="lazy" decoding="async" src="img/ap-results-1.webp" alt="A couple at home unpacks shopping bags and boxes on their living room floor" style="width:1792px; height:400px; object-position:50% 23.48%">
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:340px 1fr 1fr 1fr 1fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:12px; justify-content:end">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:64px; font-weight:700; line-height:1; letter-spacing:-2.5px; color:#0a0b0a">Outcomes and impact</h2>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#565c55">Aplazo, BNPL squad, 2026. The pilot led Aplazo to bet big on its own branded point of sale.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:32px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1; letter-spacing:-2px; white-space:nowrap; font-variant-numeric:tabular-nums; color:#ffffff">20 s</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; line-height:1.3; color:#ffffff">Average purchase, down from about 2 minutes. 6× faster.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:32px; background:#2c5a40; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1; letter-spacing:-2px; white-space:nowrap; font-variant-numeric:tabular-nums; color:#ffffff">65 → 87</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; line-height:1.3; color:#ffffff">BNPL Offline NPS, against a 70 company average</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:32px; background:#131513; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1; letter-spacing:-2px; white-space:nowrap; font-variant-numeric:tabular-nums; color:#ffffff">10/10</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; line-height:1.3; color:#ffffff">Pilot merchants preferred it over other payment methods</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:32px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1; letter-spacing:-2px; white-space:nowrap; font-variant-numeric:tabular-nums; color:#0a0b0a">$0.25B</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; line-height:1.3; color:#0a0b0a">BNPL Offline GMV, up 213% from $0.08B (Jan to Sept 2026)</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; padding:32px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:52px; font-weight:500; line-height:1; letter-spacing:-2px; white-space:nowrap; font-variant-numeric:tabular-nums; color:#0a0b0a">31%</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:24px; line-height:1.3; color:#0a0b0a">New user activation, up from 25%</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Aplazo · In-store payments · 2026</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 17 of 28"><section class="slide" id="ap-back" style="background:#f3f4f1;color:#0a0b0a;font-family:'Instrument Sans', Arial, sans-serif;padding:64px 64px 128px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px">
+<p style="background:#2e7a52;color:#ffffff;padding:8px 24px;border-radius:999px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase">Looking back · Aplazo</p>
+<h2 style="font-size:68px;font-weight:700;line-height:1.08;letter-spacing:-2px;text-align:center;width:1400px">There's no better way to empathize with users <span style="color:#2c5a40">than getting into their shoes. For real.</span></h2>
+<p style="font-size:32px;font-weight:500;line-height:1.4;color:#565c55;text-align:center;width:1300px">Going into the field and experiencing first-hand how our product fails opens up endless possibilities to make it better. Technical constraints are nothing but a creativity spark to find the way to build magical experiences.</p>
+<div style="position:absolute;left:0px;top:1016px;width:1920px;height:64px;padding:0px 64px;border-top:2px solid #d5d9d3;display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:700;letter-spacing:-1px">Rafael Morales</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:1px;text-transform:uppercase;color:#565c55">Aplazo · In-store payments · 2026</p>
+</div>
+</section></div>
+<div class="frame" aria-label="Slide 18 of 28"><section class="slide" id="cl-open" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="position:relative; height:640px; display:flex; flex-direction:column; align-self:stretch; background:#e4e7e2; border-radius:28px; overflow:hidden">
+    <img loading="lazy" decoding="async" src="img/cl-open-1.webp" alt="A hand holds a phone showing the My cards screen of the Clara app against a blue perforated wall" style="position:absolute; top:0; right:0; left:0; height:640px; object-position:50% 40%; width:100%">
+    <div style="position:absolute; right:0; bottom:0; left:0; display:flex; flex-direction:row; align-items:end; justify-content:space-between; padding:48px; background:linear-gradient(0deg, #0a0b0ad1 0%, #0a0b0a00 100%)">
+      <div style="display:flex; flex-direction:column; gap:12px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#f3f4f1">2022 to 2024</p>
+        <img loading="lazy" decoding="async" src="img/clara-logo.svg" alt="Clara" style="height:112px; filter:brightness(0) grayscale(1) invert(1)">
+      </div>
+      <div style="display:flex; flex-direction:row; gap:12px">
+        <p style="padding:8px 22px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#f3f4f1; background:#f3f4f129; border-radius:256px">Design Director</p>
+        <p style="padding:8px 22px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#f3f4f1; background:#f3f4f129; border-radius:256px">Corporate payments</p>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid; gap:64px; grid-template-columns:5fr 7fr">
+    <div style="display:flex; flex-direction:column; gap:16px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Case 02</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:56px; font-weight:700; line-height:1.02; letter-spacing:-2px; color:#0a0b0a">Enterprise-grade controls.<br>Still simple for startups.</h3>
+    </div>
+    <p style="padding:44px 0 0; font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; line-height:1.45; color:#565c55">Scaling a spend management platform for enterprise finance teams, without degrading it for the smaller companies that made it successful.</p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 19 of 28"><section class="slide" id="cl-glance" style="display:flex; flex-direction:column; gap:48px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">At a glance</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#0a0b0a">Clara is corporate cards, expenses and payments for more than 40,000 companies in Latin America.</p>
+  </div>
+  <div style="display:grid; gap:24px; grid-template-columns:1fr 1fr 1.15fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:28px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Role</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Design Director and hands-on IC in the Admin and Finance squad.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Timeline</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">April 2022 to March 2024</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Team</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">16 designers: 10 in Mexico, 6 in Brazil.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:28px; justify-content:space-between; padding:40px 44px; background:#e4e7e2; border-radius:20px">
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Scope</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Web dashboard, mobile app, design system and design operations.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Markets</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Mexico and Brazil.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Company goal</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#0a0b0a">Move upmarket to mid-market and enterprise, closer to break-even.</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:40px 44px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Result</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">+47 pts</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff">Share of enterprise and mid-market companies in Clara's client base, in two years.</p>
+      <div style="flex:1"></div>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff">The move upmarket brought the company an average <b>10% more clients MoM</b></p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 20 of 28"><section class="slide" id="cl-challenge" style="display:flex; flex-direction:column; gap:44px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:row; gap:40px; align-items:end; justify-content:space-between">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Problems and goals</h2>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">Clara won startups. To keep growing, it had to win enterprise finance teams.</p>
+    </div>
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:1fr 1fr 0.8fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:22px; padding:36px 40px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">User problems</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>Missing workflows.</b> Enterprise finance teams needed approvals, card controls and supplier payments.</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>More of everything.</b> More people, more controls, more entities, more systems to connect.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px; padding:36px 40px; background:#ffffff; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">Business problems</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>Growth meant moving upmarket.</b> Startups were won. Mid-market and enterprise were next.</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>Without losing the base.</b> Small customers made Clara successful and had to stay happy.</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:27px; line-height:1.4; color:#0a0b0a"><b>Revenue context.</b> <span style="color:#565c55">Plenty of prospects were on hold due to missing enterprise grade features.</span></p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:22px; padding:36px 40px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Goals</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:600; line-height:1.3; color:#ffffff">Win mid-market and enterprise</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:40px; align-items:center; padding:32px 44px; background:#131513; border-radius:20px">
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#8fc4a3">The constraint</p>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:40px; font-weight:700; line-height:1.15; letter-spacing:-1px; color:#ffffff">Build what large teams need without degrading the experience for small customers.</p>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 21 of 28"><section class="slide" id="cl-process" style="display:flex; flex-direction:column; gap:44px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:row; gap:40px; align-items:end; justify-content:space-between">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Design process, end to end</h2>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#565c55">From interviews to a roadmap, shipped as incremental improvements.</p>
+    </div>
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr; flex:1">
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">1</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">Discover</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">25+ in-depth interviews with enterprise finance teams.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:column; gap:6px; padding:16px 0 0; border-top:2px solid #d5d9d3">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Output</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.35; color:#0a0b0a">Value proposition canvas</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">2</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">Define</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">Workflows and multi-user experiences as the core problem.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:column; gap:6px; padding:16px 0 0; border-top:2px solid #d5d9d3">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Output</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.35; color:#0a0b0a">Missing workflows list</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">3</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">Prioritize</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">Each missing workflow became a feature on the roadmap.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:column; gap:6px; padding:16px 0 0; border-top:2px solid #d5d9d3">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Output</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.35; color:#0a0b0a">Roadmap and paid tiers</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">4</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">Design</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">Web dashboard and mobile app as one experience.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:column; gap:6px; padding:16px 0 0; border-top:2px solid #d5d9d3">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Output</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.35; color:#0a0b0a">Unified design system</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#e4e7e2; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">5</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#0a0b0a">Test</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#0a0b0a">A testing group of client finance teams, set up with Key Account Managers.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:column; gap:6px; padding:16px 0 0; border-top:2px solid #d5d9d3">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Output</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.35; color:#565c55">Features iterated before launch</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:20px; padding:32px 28px; background:#131513; border-radius:20px">
+      <p style="width:52px; height:52px; font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:2; text-align:center; color:#ffffff; background:#2c5a40; border-radius:256px">6</p>
+      <h3 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:36px; font-weight:700; line-height:1.1; letter-spacing:-1px; color:#ffffff">Ship and measure</h3>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; line-height:1.4; color:#ffffff">Features shipped one by one to the right tier.</p>
+      <div style="flex:1"></div>
+      <div style="display:flex; flex-direction:column; gap:6px; padding:16px 0 0; border-top:2px solid #2a2e2a">
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#c9cec7">Output</p>
+        <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:26px; font-weight:600; line-height:1.35; color:#ffffff">+47 pts client mix</p>
+      </div>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1px; text-transform:uppercase; color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 22 of 28"><section class="slide" id="cl-research" style="display:grid; gap:56px; grid-template-columns:560px 1fr; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="display:flex; flex-direction:column; gap:12px">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Understanding the difference</h2>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#565c55">We started with how enterprise finance teams actually operate, and how that differs from a startup.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:24px; justify-content:space-between; flex:1; padding:36px 40px; background:#131513; border-radius:20px">
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:112px; font-weight:500; line-height:1; letter-spacing:-5px; font-variant-numeric:tabular-nums; color:#ffffff">25+</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.4; color:#ffffff">Enterprise finance teams interviewed in depth</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:column; gap:24px">
+    <div style="display:flex; flex-direction:column; gap:28px; padding:36px 40px; background:#eef0ec; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#2c5a40">The workflows we kept hearing</p>
+      <div style="display:grid; gap:16px; grid-template-columns:1fr 1fr 1fr 1fr">
+        <p style="padding:20px 24px; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; font-weight:600; color:#ffffff; background:#2c5a40; border-radius:20px">Approvals</p>
+        <p style="padding:20px 24px; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; font-weight:600; color:#ffffff; background:#2c5a40; border-radius:20px">Card controls</p>
+        <p style="padding:20px 24px; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; font-weight:600; color:#ffffff; background:#2c5a40; border-radius:20px">Reconciliation</p>
+        <p style="padding:20px 24px; font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; font-weight:600; color:#ffffff; background:#2c5a40; border-radius:20px">Reporting</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px; padding:36px 40px; background:#2e7a52; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#ffffff">Insight</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:44px; font-weight:700; line-height:1.12; letter-spacing:-1px; color:#ffffff">Their processes were highly structured and surprisingly similar. Most were missing from our platform.</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:14px; flex:1; padding:36px 40px; background:#e4e7e2; border-radius:20px">
+      <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:#565c55">Direction</p>
+      <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px; line-height:1.45; color:#0a0b0a">Workflows and multi-user experiences were the core of the problem. Each missing workflow became a feature we could ship as an incremental improvement.</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 23 of 28"><section class="slide" id="cl-built" style="background:#f3f4f1;color:#0a0b0a;font-family:'Instrument Sans', Arial, sans-serif;padding:64px 64px 128px;display:flex;flex-direction:column;gap:48px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<h2 style="font-size:76px;font-weight:700;line-height:1;letter-spacing:-3px">What we built</h2>
+<p style="font-size:32px;font-weight:500;line-height:1.3">Enterprise needs, turned into a roadmap of features and improvements.</p>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:20px">
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M173.66,98.34a8,8,0,0,1,0,11.32l-56,56a8,8,0,0,1-11.32,0l-24-24a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35A8,8,0,0,1,173.66,98.34ZM232,128A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Approval flows</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Personalized, multi-step, with bulk actions.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Card controls</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Manage spend across teams from one place.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,16,.45A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">ERP integrations</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Connect Clara to existing accounting systems.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M117.25,157.92a60,60,0,1,0-66.5,0A95.83,95.83,0,0,0,3.53,195.63a8,8,0,1,0,13.4,8.74,80,80,0,0,1,134.14,0,8,8,0,0,0,13.4-8.74A95.83,95.83,0,0,0,117.25,157.92ZM40,108a44,44,0,1,1,44,44A44.05,44.05,0,0,1,40,108Zm210.14,98.7a8,8,0,0,1-11.07-2.33A79.83,79.83,0,0,0,172,168a8,8,0,0,1,0-16,44,44,0,1,0-16.34-84.87,8,8,0,1,1-5.94-14.85,60,60,0,0,1,55.53,105.64,95.83,95.83,0,0,1,47.22,37.71A8,8,0,0,1,250.14,206.7Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Multi-entity accounts</h3><p style="font-size:26px;line-height:1.35;color:#565c55">One account for holding companies.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm88,104a87.61,87.61,0,0,1-3.33,24H174.16a157.44,157.44,0,0,0,0-48h38.51A87.61,87.61,0,0,1,216,128ZM102,168H154a115.11,115.11,0,0,1-26,45A115.27,115.27,0,0,1,102,168Zm-3.9-16a140.84,140.84,0,0,1,0-48h59.88a140.84,140.84,0,0,1,0,48ZM40,128a87.61,87.61,0,0,1,3.33-24H81.84a157.44,157.44,0,0,0,0,48H43.33A87.61,87.61,0,0,1,40,128ZM154,88H102a115.11,115.11,0,0,1,26-45A115.27,115.27,0,0,1,154,88Zm52.33,0H170.71a135.28,135.28,0,0,0-22.3-45.6A88.29,88.29,0,0,1,206.37,88ZM107.59,42.4A135.28,135.28,0,0,0,85.29,88H49.63A88.29,88.29,0,0,1,107.59,42.4ZM49.63,168H85.29a135.28,135.28,0,0,0,22.3,45.6A88.29,88.29,0,0,1,49.63,168Zm98.78,45.6a135.28,135.28,0,0,0,22.3-45.6h35.66A88.29,88.29,0,0,1,148.41,213.6Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Clara Pagos</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Local and international supplier payments.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M227.32,28.68a16,16,0,0,0-15.66-4.08l-.15,0L19.57,82.84a16,16,0,0,0-2.49,29.8L102,154l41.3,84.87A15.86,15.86,0,0,0,157.74,248q.69,0,1.38-.06a15.88,15.88,0,0,0,14-11.51l58.2-191.94c0-.05,0-.1,0-.15A16,16,0,0,0,227.32,28.68ZM157.83,231.85l-.05.14,0-.07-40.06-82.3,48-48a8,8,0,0,0-11.31-11.31l-48,48L24.08,98.25l-.07,0,.14,0L216,40Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Bill payments</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Pay service bills from the platform.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24C74.17,24,32,48.6,32,80v96c0,31.4,42.17,56,96,56s96-24.6,96-56V80C224,48.6,181.83,24,128,24Zm80,104c0,9.62-7.88,19.43-21.61,26.92C170.93,163.35,150.19,168,128,168s-42.93-4.65-58.39-13.08C55.88,147.43,48,137.62,48,128V111.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64ZM69.61,53.08C85.07,44.65,105.81,40,128,40s42.93,4.65,58.39,13.08C200.12,60.57,208,70.38,208,80s-7.88,19.43-21.61,26.92C170.93,115.35,150.19,120,128,120s-42.93-4.65-58.39-13.08C55.88,99.43,48,89.62,48,80S55.88,60.57,69.61,53.08ZM186.39,202.92C170.93,211.35,150.19,216,128,216s-42.93-4.65-58.39-13.08C55.88,195.43,48,185.62,48,176V159.36c17.06,15,46.23,24.64,80,24.64s62.94-9.68,80-24.64V176C208,185.62,200.12,195.43,186.39,202.92Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Business debit account</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Spend controls, without the cost of financing.</p></div></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><div style="width:72px;height:72px;border-radius:16px;background:#d9e3db;color:#16301f;display:flex;align-items:center;justify-content:center"><svg class="x-icon" aria-hidden="true" style="width:40px;height:40px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="M216.57,39.43A80,80,0,0,0,83.91,120.78L28.69,176A15.86,15.86,0,0,0,24,187.31V216a16,16,0,0,0,16,16H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A79.73,79.73,0,0,0,160,176h.1A80,80,0,0,0,216.57,39.43ZM224,98.1c-1.09,34.09-29.75,61.86-63.89,61.9H160a63.7,63.7,0,0,1-23.65-4.51,8,8,0,0,0-8.84,1.68L116.69,168H96a8,8,0,0,0-8,8v16H72a8,8,0,0,0-8,8v16H40V187.31l58.83-58.82a8,8,0,0,0,1.68-8.84A63.72,63.72,0,0,1,96,95.92c0-34.14,27.81-62.8,61.9-63.89A64,64,0,0,1,224,98.1ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"/></svg></div><div style="display:flex;flex-direction:column;gap:8px"><h3 style="font-size:36px;font-weight:700;line-height:1.1;letter-spacing:-0.5px">Single sign-on</h3><p style="font-size:26px;line-height:1.35;color:#565c55">Enterprise login with SSO.</p></div></div>
+</div>
+<div style="position:absolute;left:0px;top:1016px;width:1920px;height:64px;padding:0px 64px;border-top:2px solid #d5d9d3;display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:700;letter-spacing:-1px">Rafael Morales</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:1px;text-transform:uppercase;color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+</div>
+
+</section></div>
+<div class="frame" aria-label="Slide 24 of 28"><section class="slide" id="cl-tiers" style="background:#f3f4f1;color:#0a0b0a;font-family:'Instrument Sans', Arial, sans-serif;padding:64px 0px 128px 64px;display:grid;grid-template-columns:832px 1024px">
+<img loading="lazy" decoding="async" src="img/cl-tiers-1.webp" alt="A laptop showing the Clara dashboard rests on a yellow armchair beside plants" style="position:absolute;left:960px;top:0px;width:960px;height:1016px;object-fit:cover">
+<div style="display:flex;flex-direction:column;gap:40px">
+<h2 style="font-size:76px;font-weight:700;line-height:1;letter-spacing:-3px">Simple for some. Powerful for others.</h2>
+<div style="background:#e4e7e2;border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#2c5a40">Paid plans by tier</p>
+<p style="font-size:28px;line-height:1.45">Enterprise capabilities live in the higher tiers. Smaller customers keep a simple experience. Larger teams get the controls they need.</p>
+</div>
+<div style="background:#e4e7e2;border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;gap:14px">
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:#2c5a40">One experience across channels</p>
+<p style="font-size:28px;line-height:1.45">Beyond my IC work on the squad, I owned the experience past the web dashboard, guiding each feature into the mobile app so both stayed consistent.</p>
+</div>
+</div>
+<div></div>
+<div style="position:absolute;left:0px;top:1016px;width:1920px;height:64px;padding:0px 64px;background:#f3f4f1;border-top:2px solid #d5d9d3;display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:700;letter-spacing:-1px">Rafael Morales</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:1px;text-transform:uppercase;color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+</div>
+</section></div>
+<div class="frame" aria-label="Slide 25 of 28"><section class="slide" id="cl-screens" style="display:flex; flex-direction:column; gap:40px; padding:64px 64px 128px; background:#f3f4f1">
+  <div style="display:flex; flex-direction:column; gap:12px">
+    <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:76px; font-weight:700; line-height:1; letter-spacing:-3px; color:#0a0b0a">Web and mobile, one experience</h2>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; font-weight:500; line-height:1.3; color:#0a0b0a">Enterprise features on the dashboard, carried into the app.</p>
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:28px"><a target="_blank" rel="noopener" href="https://www.figma.com/design/1XO9TfP0wTbBgi7CHgUtxa/Redesign-Prototype?node-id=0-1&amp;t=d2vC9PMd8ZIUazin-1">Figma link</a><br></p>
+  </div>
+  <div style="display:grid; gap:16px; grid-template-columns:1.25fr 1fr 1fr; grid-template-rows:350px 350px">
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; grid-row:span 2; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/cl-screens-1.webp" alt="Hands type on a laptop showing the Cards page of the Clara web dashboard" style="flex:100">
+      <p style="position:absolute; bottom:24px; left:24px; padding:6px 20px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Web dashboard</p>
+    </div>
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/cl-screens-2.webp" alt="A phone shows the Clara card settings screen with a limit slider" style="flex:100">
+      <p style="position:absolute; bottom:24px; left:24px; padding:6px 20px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Card settings</p>
+    </div>
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/cl-screens-3.webp" alt="A phone lying on a table shows the Clara statements screen" style="flex:100">
+      <p style="position:absolute; bottom:24px; left:24px; padding:6px 20px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Statements</p>
+    </div>
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/cl-screens-4.webp" alt="A phone on a blue surface shows the Clara card detail screen" style="flex:100">
+      <p style="position:absolute; bottom:24px; left:24px; padding:6px 20px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Card detail</p>
+    </div>
+    <div style="position:relative; display:flex; flex-direction:column; align-self:stretch; justify-self:stretch; background:#e4e7e2; border-radius:20px; overflow:hidden">
+      <img loading="lazy" decoding="async" src="img/cl-screens-5.webp" alt="A person holds a Clara card next to the Clara app on a phone" style="flex:100">
+      <p style="position:absolute; bottom:24px; left:24px; padding:6px 20px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; color:#ffffff; background:#131513; border-radius:256px">Card and app</p>
+    </div>
+  </div>
+  <div style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+    <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; letter-spacing:1px; text-transform:uppercase; color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+  </div>
+</section></div>
+<div class="frame" aria-label="Slide 26 of 28"><section class="slide" id="cl-results" style="background:#f3f4f1;color:#0a0b0a;font-family:'Instrument Sans', Arial, sans-serif;padding:64px 64px 128px;display:grid;grid-template-columns:560px 1fr;gap:56px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:20px">
+<h2 style="font-size:76px;font-weight:700;line-height:1;letter-spacing:-3px">Outcomes and impact</h2>
+<p style="font-size:28px;line-height:1.45;color:#565c55">Clara, Admin and Finance squad, April 2022 to March 2024.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px">
+<div style="grid-column:span 2;background:#2e7a52;color:#ffffff;border-radius:20px;padding:36px 40px;display:flex;flex-direction:column;justify-content:space-between;gap:28px"><p style="font-size:140px;font-weight:500;line-height:1;letter-spacing:-6px">+47 pts</p><p style="font-size:28px;line-height:1.4">Share of enterprise and mid-market companies in the client base, in two years</p></div>
+<div style="background:#131513;color:#ffffff;border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;justify-content:end;gap:12px"><p style="font-size:40px;font-weight:700;line-height:1.1;letter-spacing:-1px">Closer to break-even</p></div>
+<div style="background:#e4e7e2;border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><p style="font-size:40px;font-weight:700;line-height:1.1;letter-spacing:-1px">Design system v2</p><p style="font-size:26px;line-height:1.3;color:#565c55">Desktop and mobile</p></div>
+<div style="grid-column:span 2;background:#e4e7e2;border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:20px"><p style="font-size:40px;font-weight:700;line-height:1.1;letter-spacing:-1px">Paid plans by tier</p><p style="font-size:26px;line-height:1.3;color:#565c55">Simple for small customers</p></div>
+</div>
+<div style="position:absolute;left:0px;top:1016px;width:1920px;height:64px;padding:0px 64px;border-top:2px solid #d5d9d3;display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:700;letter-spacing:-1px">Rafael Morales</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:1px;text-transform:uppercase;color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+</div>
+</section></div>
+<div class="frame" aria-label="Slide 27 of 28"><section class="slide" id="cl-back" style="background:#f3f4f1;color:#0a0b0a;font-family:'Instrument Sans', Arial, sans-serif;padding:64px 64px 128px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:32px">
+<p style="background:#2e7a52;color:#ffffff;padding:8px 24px;border-radius:999px;font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase">Looking back · Clara</p>
+<h2 style="font-size:68px;font-weight:700;line-height:1.08;letter-spacing:-2px;text-align:center;width:1400px">Value first. <span style="color:#2c5a40">Screens second.</span></h2>
+<p style="font-size:32px;font-weight:500;line-height:1.4;color:#565c55;text-align:center;width:1300px">Mapping a value proposition against the product roadmap is the best way to articulate the future experience for customers. Before designing flows or screens, make sure every feature adds value or removes a pain point for our users.</p>
+<div style="position:absolute;left:0px;top:1016px;width:1920px;height:64px;padding:0px 64px;border-top:2px solid #d5d9d3;display:flex;flex-direction:row;justify-content:space-between;align-items:center">
+<p style="font-size:30px;font-weight:700;letter-spacing:-1px">Rafael Morales</p>
+<p style="font-family:'IBM Plex Mono', 'Courier New', monospace;font-size:24px;letter-spacing:1px;text-transform:uppercase;color:#565c55">Clara · Admin and Finance · 2022–2024</p>
+</div>
+</section></div>
+<div class="frame" aria-label="Slide 28 of 28"><section class="slide" id="closing" style="background:#f3f4f1">
+  <div id="e1-ev4z7o" style="position:absolute; top:1016px; left:0; width:1920px; height:64px; display:flex; flex-direction:row; align-items:center; justify-content:space-between; padding:0 64px; border-top:2px solid #d5d9d3">
+    <p style="font-family:'Instrument Sans', Arial, sans-serif; font-size:30px; font-weight:700; letter-spacing:-1px; color:#0a0b0a">Rafael Morales</p>
+  </div>
+  <div id="p9bd35c5cb6d5r0-e676eac4" style="position:absolute; top:64px; left:64px; width:1792px; height:888px; display:flex; flex-direction:column; background:#11181d; border-radius:28px; overflow:hidden">
+    <div style="position:absolute; top:0; bottom:0; left:0; display:flex; flex-direction:column; gap:28px; justify-content:end; padding:72px">
+      <h2 style="font-family:'Instrument Sans', Arial, sans-serif; font-size:200px; font-weight:700; line-height:0.9; letter-spacing:-10px; color:#f3f4f1">Thank you!</h2>
+      <p style="width:900px; font-family:'Instrument Sans', Arial, sans-serif; font-size:32px; line-height:1.4; color:#f3f4f1; opacity:0.9"></p>
+      <div style="display:flex; flex-direction:row; gap:16px; align-items:center">
+        <p style="padding:10px 22px; font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:28px; color:#f3f4f1; background:#f3f4f124; border-radius:14px"></p>
+        <p style="font-family:'IBM Plex Mono', 'Courier New', monospace; font-size:24px; color:#f3f4f1; opacity:0.85"></p>
+      </div>
+    </div>
+  </div>
+</section></div>
+</main>
+<div class="hint" id="hint">← → to move · Esc to exit</div>
+<script>
+(() => {
+  const frames = [...document.querySelectorAll('.frame')];
+  const body = document.body;
+  let current = 0;
+
+  const fit = () => {
+    if (body.classList.contains('presenting')) {
+      const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+      frames.forEach(f => f.style.setProperty('--s', s));
+    } else {
+      frames.forEach(f => f.style.setProperty('--s', f.clientWidth / 1920));
+    }
+  };
+  new ResizeObserver(fit).observe(document.getElementById('deck'));
+  addEventListener('resize', fit);
+
+  const show = i => {
+    current = Math.max(0, Math.min(frames.length - 1, i));
+    frames.forEach((f, j) => f.classList.toggle('current', j === current));
+    history.replaceState(null, '', '#' + (current + 1));
+  };
+  const enter = () => {
+    // Start from the slide closest to the top of the viewport.
+    const top = frames.findIndex(f => f.getBoundingClientRect().bottom > 80);
+    body.classList.add('presenting');
+    show(top < 0 ? 0 : top);
+    fit();
+    const h = document.getElementById('hint'); h.style.animation = 'none'; h.offsetHeight; h.style.animation = '';
+    document.documentElement.requestFullscreen?.().catch(() => {});
+  };
+  const exit = () => {
+    if (!body.classList.contains('presenting')) return;
+    body.classList.remove('presenting');
+    fit();
+    frames[current].scrollIntoView({ block: 'start' });
+    if (document.fullscreenElement) document.exitFullscreen?.();
+  };
+
+  document.getElementById('present').addEventListener('click', enter);
+  document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement) exit(); });
+  addEventListener('keydown', e => {
+    if (!body.classList.contains('presenting')) return;
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(current + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); show(current - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(frames.length - 1);
+    else if (e.key === 'Escape') exit();
+  });
+  document.getElementById('deck').addEventListener('click', e => {
+    if (!body.classList.contains('presenting') || e.target.closest('a')) return;
+    show(current + (e.clientX < innerWidth / 3 ? -1 : 1));
+  });
+
+  fit();
+  const n = parseInt(location.hash.slice(1), 10);
+  if (n > 1 && frames[n - 1]) frames[n - 1].scrollIntoView({ block: 'start' });
+})();
+</script>
+</body>
+</html>
